@@ -1,0 +1,765 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/8/2023 5:44:53 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PYKE"
+  DTS:CreatorName="PYKE\AvatarLapeticula"
+  DTS:DTSID="{05B253CD-F9B9-472E-9C2E-A2B3B4265F75}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5209.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="clase viernes"
+  DTS:PackageType="5"
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{EA682C0F-7717-4D1D-9F33-0B37836B1DFC}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost\SQLEXPRESS.staging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{32C4DCBD-31EA-4A01-9EA3-87CA1B6C1B0C}"
+      DTS:ObjectName="localhost\SQLEXPRESS.staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost\SQLEXPRESS;Initial Catalog=staging;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-clase viernes-{32C4DCBD-31EA-4A01-9EA3-87CA1B6C1B0C}localhost\SQLEXPRESS.staging;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost\SQLEXPRESS.TRADEProd]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{6EEF036B-94CF-4F75-B4CF-3FF481EBB2B1}"
+      DTS:ObjectName="localhost\SQLEXPRESS.TRADEProd">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost\SQLEXPRESS;Initial Catalog=TRADEProd;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-clase viernes-{6EEF036B-94CF-4F75-B4CF-3FF481EBB2B1}localhost\SQLEXPRESS.TRADEProd;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\carga de staging"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{CB524AFB-E8C7-4906-AF33-141D6605E0BF}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="carga de staging">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\carga de staging\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{6027D76C-9978-4C92-B019-BBF73E08CC4A}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\carga de staging\Data Flow Task\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[CLIENTES]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\carga de staging\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[localhost\SQLEXPRESS.staging]"
+                      connectionManagerRefId="Package.ConnectionManagers[localhost\SQLEXPRESS.staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NOMBRE]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="NOMBRE"
+                          externalMetadataColumnId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NOMBRE]"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[NOMBRE]" />
+                        <inputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NRO]"
+                          cachedDataType="i2"
+                          cachedName="NRO"
+                          externalMetadataColumnId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NRO]"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[NRO]" />
+                        <inputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ID_CLIENTE]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="ID_CLIENTE"
+                          externalMetadataColumnId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID_CLIENTE]"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ID_CLIENTE]" />
+                        <inputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[APELLIDO]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="APELLIDO"
+                          externalMetadataColumnId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[APELLIDO]"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[APELLIDO]" />
+                        <inputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[EDAD]"
+                          cachedDataType="i2"
+                          cachedName="EDAD"
+                          externalMetadataColumnId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EDAD]"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[EDAD]" />
+                        <inputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ESTADO_CIVIL]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="ESTADO_CIVIL"
+                          externalMetadataColumnId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ESTADO_CIVIL]"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ESTADO_CIVIL]" />
+                        <inputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RESIDENCIA]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="RESIDENCIA"
+                          externalMetadataColumnId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RESIDENCIA]"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[RESIDENCIA]" />
+                        <inputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ORIGEN]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="ORIGEN"
+                          externalMetadataColumnId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ORIGEN]"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ORIGEN]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NRO]"
+                          dataType="i2"
+                          name="NRO" />
+                        <externalMetadataColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID_CLIENTE]"
+                          dataType="wstr"
+                          length="255"
+                          name="ID_CLIENTE" />
+                        <externalMetadataColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NOMBRE]"
+                          dataType="wstr"
+                          length="255"
+                          name="NOMBRE" />
+                        <externalMetadataColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[APELLIDO]"
+                          dataType="wstr"
+                          length="255"
+                          name="APELLIDO" />
+                        <externalMetadataColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EDAD]"
+                          dataType="i2"
+                          name="EDAD" />
+                        <externalMetadataColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ESTADO_CIVIL]"
+                          dataType="wstr"
+                          length="255"
+                          name="ESTADO_CIVIL" />
+                        <externalMetadataColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RESIDENCIA]"
+                          dataType="wstr"
+                          length="255"
+                          name="RESIDENCIA" />
+                        <externalMetadataColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ORIGEN]"
+                          dataType="wstr"
+                          length="255"
+                          name="ORIGEN" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\carga de staging\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\carga de staging\Data Flow Task\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[CLIENTES]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\carga de staging\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[localhost\SQLEXPRESS.TRADEProd]"
+                      connectionManagerRefId="Package.ConnectionManagers[localhost\SQLEXPRESS.TRADEProd]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[NOMBRE]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NOMBRE]"
+                          length="255"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[NOMBRE]"
+                          name="NOMBRE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[NRO]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NRO]"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[NRO]"
+                          name="NRO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ID_CLIENTE]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ID_CLIENTE]"
+                          length="255"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ID_CLIENTE]"
+                          name="ID_CLIENTE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[APELLIDO]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[APELLIDO]"
+                          length="255"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[APELLIDO]"
+                          name="APELLIDO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[EDAD]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EDAD]"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[EDAD]"
+                          name="EDAD"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ESTADO_CIVIL]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ESTADO_CIVIL]"
+                          length="255"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ESTADO_CIVIL]"
+                          name="ESTADO_CIVIL"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[RESIDENCIA]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RESIDENCIA]"
+                          length="255"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[RESIDENCIA]"
+                          name="RESIDENCIA"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ORIGEN]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ORIGEN]"
+                          length="255"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ORIGEN]"
+                          name="ORIGEN"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NOMBRE]"
+                          dataType="wstr"
+                          length="255"
+                          name="NOMBRE" />
+                        <externalMetadataColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NRO]"
+                          dataType="i2"
+                          name="NRO" />
+                        <externalMetadataColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ID_CLIENTE]"
+                          dataType="wstr"
+                          length="255"
+                          name="ID_CLIENTE" />
+                        <externalMetadataColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[APELLIDO]"
+                          dataType="wstr"
+                          length="255"
+                          name="APELLIDO" />
+                        <externalMetadataColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EDAD]"
+                          dataType="i2"
+                          name="EDAD" />
+                        <externalMetadataColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ESTADO_CIVIL]"
+                          dataType="wstr"
+                          length="255"
+                          name="ESTADO_CIVIL" />
+                        <externalMetadataColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RESIDENCIA]"
+                          dataType="wstr"
+                          length="255"
+                          name="RESIDENCIA" />
+                        <externalMetadataColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ORIGEN]"
+                          dataType="wstr"
+                          length="255"
+                          name="ORIGEN" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NRO]"
+                          dataType="i2"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NRO]"
+                          name="NRO" />
+                        <outputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ID_CLIENTE]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ID_CLIENTE]"
+                          name="ID_CLIENTE" />
+                        <outputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NOMBRE]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NOMBRE]"
+                          name="NOMBRE" />
+                        <outputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[APELLIDO]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[APELLIDO]"
+                          name="APELLIDO" />
+                        <outputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EDAD]"
+                          dataType="i2"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EDAD]"
+                          name="EDAD" />
+                        <outputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ESTADO_CIVIL]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ESTADO_CIVIL]"
+                          name="ESTADO_CIVIL" />
+                        <outputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RESIDENCIA]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RESIDENCIA]"
+                          name="RESIDENCIA" />
+                        <outputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ORIGEN]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ORIGEN]"
+                          name="ORIGEN" />
+                        <outputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\carga de staging\Data Flow Task.Paths[OLE DB Source Output]"
+                  endId="Package\carga de staging\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\carga de staging\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\carga de staging\truncate staging"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{623C1ACC-CE70-4A28-BA7B-9B230257C666}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="truncate staging"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{32C4DCBD-31EA-4A01-9EA3-87CA1B6C1B0C}"
+              SQLTask:SqlStatementSource="truncate table dbo.ARTICULOS&#xA;truncate table dbo.CLIENTE&#xA;truncate table dbo.VENTAS&#xA;truncate table dbo.VENDEDORES&#xA;truncate table dbo.TIEMPOS&#xA;truncate table dbo.SUCURSALES" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\carga de staging.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{9B1845C2-1DB4-4D5D-B764-5A8E8A0023FA}"
+          DTS:From="Package\carga de staging\truncate staging"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\carga de staging\Data Flow Task"
+          DTS:Value="2" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Carga DW"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{99E150A5-45C8-47AF-938A-84B64F3797BD}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga DW">
+      <DTS:Variables />
+      <DTS:Executables />
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{BA8064AD-B6B4-4044-A0FE-88DEF031579E}"
+      DTS:From="Package\carga de staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Carga DW"
+      DTS:Value="2" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="155,42"
+          Id="Package\carga de staging\Data Flow Task"
+          TopLeft="122,157" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\carga de staging\truncate staging"
+          TopLeft="129,18" />
+        <EdgeLayout
+          Id="Package\carga de staging.PrecedenceConstraints[Constraint]"
+          TopLeft="214,60">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14.5,97"
+              Start="0,0"
+              End="-14.5,89.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44.5"
+                    Point2="0,48.5"
+                    Point3="-4,48.5" />
+                  <mssgle:LineSegment
+                    End="-10.5,48.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.5,48.5"
+                    Point2="-14.5,48.5"
+                    Point3="-14.5,52.5" />
+                  <mssgle:LineSegment
+                    End="-14.5,89.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-32.554453125,53.5,48.30890625,10.3349609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="371,254"
+          Size="371,297"
+          Id="Package\carga de staging"
+          TopLeft="40,12" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="276,114"
+          Size="276,157"
+          Id="Package\Carga DW"
+          TopLeft="517,249" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="411,160.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="106,167"
+              Start="0,0"
+              End="98.5,167">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="49,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="49,0"
+                    Point2="53,0"
+                    Point3="53,4" />
+                  <mssgle:LineSegment
+                    End="53,163" />
+                  <mssgle:CubicBezierSegment
+                    Point1="53,163"
+                    Point2="53,167"
+                    Point3="57,167" />
+                  <mssgle:LineSegment
+                    End="98.5,167" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="28.845546875,-16.3349609375,48.30890625,10.3349609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\carga de staging\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="157,42"
+          Id="Package\carga de staging\Data Flow Task\OLE DB Source"
+          TopLeft="259,109" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\carga de staging\Data Flow Task\OLE DB Destination"
+          TopLeft="411,312" />
+        <EdgeLayout
+          Id="Package\carga de staging\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="337.5,151">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="162,161"
+              Start="0,0"
+              End="162,153.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,76.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,76.5"
+                    Point2="0,80.5"
+                    Point3="4,80.5" />
+                  <mssgle:LineSegment
+                    End="158,80.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="158,80.5"
+                    Point2="162,80.5"
+                    Point3="162,84.5" />
+                  <mssgle:LineSegment
+                    End="162,153.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\carga de staging\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\carga de staging\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

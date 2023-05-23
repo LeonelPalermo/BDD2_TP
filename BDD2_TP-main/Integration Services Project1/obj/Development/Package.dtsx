@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/8/2023 5:42:46 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PYKE"
+  DTS:CreatorName="PYKE\AvatarLapeticula"
+  DTS:DTSID="{280A14B0-996D-4D11-A9EA-12DE9BA07842}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5209.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionGUID="{20948D96-A76E-4953-ACB3-571DCACC1996}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables />
+</DTS:Executable>
